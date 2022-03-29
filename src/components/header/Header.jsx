@@ -19,15 +19,7 @@ export const Header = () => {
 
       <div className="header_menu">
         <Search />
-        {/* <div className="menu_item">
-          <span>Home</span>
-        </div>
-        <div className="menu_item">
-          <span>Watchlist</span>
-        </div>
-        <div className="menu_item">
-          <span>Search</span>
-        </div> */}
+        
       </div>
       <div className="flex-align-center right-side">
         {/* avatar */}
