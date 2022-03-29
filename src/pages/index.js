@@ -1,0 +1,9 @@
+export { HomePage } from './home_page/HomePage';
+export { SignIn } from './auth/sign_in/SignIn';
+export { SignUp } from './auth/sign_up/SignUp';
+export { HistoryPage } from './history_page/HistoryPage';
+export { LikesPage } from './likes_page/LikesPage';
+export { WatchLater } from './watch_later/WatchLater';
+export { PlaylistsPage } from './playlists_page/PlaylistsPage';
+export { VideoListing } from './video_listing/VideoListing';
+export { VideoPage } from './video_page/VideoPage';

@@ -1,0 +1,33 @@
+.header {
+  height: fit-content;
+  width:100%;
+  background: var(--secondary-color);
+  color: var(--light-text);
+  font-weight: 600;
+  display: flex;
+  gap:2rem;
+  align-items: center;
+  padding: 0 2.5vw;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+.header_menu {
+  display: flex;
+  flex: 1;
+  justify-content: space-evenly;
+}
+.right-side{
+  gap:2rem;
+  margin:2rem;
+  font-size:1.5em;
+}
+.right-side .avatar{
+  width:8rem;
+  height:8rem;
+}
+.search-input{
+  width:80%;
+}
+.search-icon{
+  cursor:pointer;
+}
