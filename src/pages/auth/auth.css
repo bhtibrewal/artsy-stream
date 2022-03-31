@@ -1,0 +1,81 @@
+/* subscribe modal */
+.subscribe-section-overlay,
+.login-section-overlay,
+.signup-section-overlay,
+.signin-section-overlay {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  position: fixed;
+  top: 0;
+  justify-content: center;
+  gap: 1rem;
+}
+.login-section-overlay,
+.signup-section-overlay,
+.signin-section-overlay {
+  display: none;
+}
+.subscribe-section,
+.signup-sec {
+  max-width: 50rem;
+  padding: 2rem 4rem;
+  margin: 2rem;
+  gap: 2rem;
+  background: var(--light-bg);
+  box-shadow: 2px 2px 20px 0px var(--secondary-color);
+  align-items: stretch;
+  text-align: center;
+}
+.overlay-close {
+  font-size: 1.5em;
+  aspect-ratio: 1;
+  padding: 1rem;
+  border-radius: 50%;
+  color: var(--primary-color);
+}
+.overlay-close:hover {
+  background: var(--primary-color);
+  color: var(--light-bg);
+}
+.login-section {
+  display: flex;
+  align-items: flex-end;
+  background: var(--light-bg);
+}
+.right-sec,
+.left-sec {
+  padding: 4rem;
+  max-width: 36rem;
+  height: 100%;
+  justify-content: flex-end;
+  align-items: stretch;
+  gap: 3rem;
+  text-align: center;
+}
+.login-section .floating-btn {
+  aspect-ratio: 1;
+  background: var(--primary-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.primary {
+  color: var(--primary-color);
+}
+.signup-sec input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+}
+.signup-sec input {
+  align-self: flex-start;
+}
+.passwrd-input i {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 1.5rem;
+  right: 1rem;
+}
