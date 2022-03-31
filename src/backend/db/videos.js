@@ -15,6 +15,7 @@ export const videos = [
     tag: 'Staff Pick',
     duration: '1h24m',
     rating: 4,
+    categoryName: 'Sketching',
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
   },
@@ -29,6 +30,7 @@ export const videos = [
     tag: 'New',
     duration: '4h21m',
     rating: 3,
+    categoryName: 'Sketching',
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
   },
@@ -43,6 +45,7 @@ export const videos = [
     tag: 'Staff Pick',
     duration: '4h 21m',
     rating: 3,
+    categoryName: 'Digital Art',
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
   },
@@ -57,6 +60,7 @@ export const videos = [
     tag: 'Trending',
     duration: '4h 21m',
     rating: 2,
+    categoryName: 'Painting',
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
   },
