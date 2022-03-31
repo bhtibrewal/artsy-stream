@@ -3,9 +3,9 @@ import { useReducer, useState } from "react";
 
 export const useUserData = () => {
   const encodedToken = localStorage.getItem("token");
-  const initialLoginState = encodedToken !== null ? true : false;
+  const initialisUserLoggedIn = encodedToken !== null ? true : false;
   axios.defaults.headers.common["authorization"] = encodedToken;
-  const [loginState, setLoginState] = useState(initialLoginState);
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(initialisUserLoggedIn);
   const address = { street: "", city: "", country: "", zip_code: "" };
 
   const initialUserData = {
@@ -37,5 +37,5 @@ export const useUserData = () => {
     user_data_reducer,
     initialUserData
   );
-  return { loginState, setLoginState, userData, userDataDispatch };
+  return { isUserLoggedIn, setIsUserLoggedIn, userData, userDataDispatch };
 };

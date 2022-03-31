@@ -1,33 +1,62 @@
 .header {
   height: fit-content;
-  width:100%;
+  width: 100%;
   background: var(--secondary-color);
   color: var(--light-text);
   font-weight: 600;
   display: flex;
-  gap:2rem;
+  gap: 2rem;
   align-items: center;
-  padding: 0 2.5vw;
+  padding: 0 5rem;
   justify-content: space-between;
-  overflow-x: hidden;
+
 }
 .header_menu {
   display: flex;
   flex: 1;
   justify-content: space-evenly;
 }
-.right-side{
-  gap:2rem;
-  margin:2rem;
-  font-size:1.5em;
+.right-side {
+  gap: 2rem;
+  margin: 2rem;
+  font-size: 1.5em;
 }
-.right-side .avatar{
-  width:8rem;
-  height:8rem;
+.right-side .avatar {
+  width: 8rem;
+  height: 8rem;
 }
-.search-input{
-  width:80%;
+.search-input {
+  width: 80%;
 }
-.search-icon{
-  cursor:pointer;
+.search-icon {
+  cursor: pointer;
+}
+
+.user {
+  cursor: pointer;
+  position: relative;
+}
+.user:hover .user-dropdown {
+  display: flex;
+}
+.user-dropdown {
+  position: absolute;
+  top: 5rem;
+  background: var(--light-bg);
+  color: var(--primary-text);
+  box-shadow: 0 0 10px -2px var(--secondary-text);
+  width: 20rem;
+  padding: 1rem 0;
+  border-radius: 0.4rem;
+  display: none;
+  z-index: var(--user-dropdown-index);
+}
+.user-dropdown > * {
+  align-self: stretch;
+  padding: 1rem 1rem;
+  justify-content: space-between;
+}
+.user-dropdown > *:hover {
+  background: var(--primary-text);
+  color: var(--light-bg);
 }
