@@ -8,23 +8,17 @@ import { v4 as uuid } from "uuid";
 export const categories = [
   {
     _id: uuid(),
-    categoryName: "Computer Programming",
+    categoryName: "Sketching",
     img_src: "https://static.skillshare.com/cdn-cgi/image/width=448,quality=85,format=auto/uploads/video/thumbnails/d80cdb6085507d8f48b11282021eaf5c/original",
-    description:
-      "Computer programming is the process of designing and building an executable computer program to accomplish a specific computing",
   },
   {
     _id: uuid(),
-    categoryName: "Frontend Development",
+    categoryName: "Painting",
     img_src: "https://static.skillshare.com/cdn-cgi/image/width=448,quality=85,format=auto/uploads/video/thumbnails/d80cdb6085507d8f48b11282021eaf5c/original",
-    description:
-      "Front-end web development, also known as client-side development is the practice of producing HTML, CSS and JavaScript for a website or Web Application",
   },
   {
     _id: uuid(),
-    categoryName: "Backend Development",
+    categoryName: "Digital Art",
     img_src: "https://static.skillshare.com/cdn-cgi/image/width=448,quality=85,format=auto/uploads/video/thumbnails/d80cdb6085507d8f48b11282021eaf5c/original",
-    description:
-      "Backend Development is also known as server-side development. It is everything that the users don't see and contains behind-the-scenes activities that occur when performing any action on a website.",
   },
 ];
