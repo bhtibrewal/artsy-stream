@@ -47,14 +47,16 @@ const sidebar = [
 ];
 
 export const Sidebar = () => {
-  const { loginState } = useUserContext();
+  const { isUserLoggedIn } = useUserContext();
   return (
     <aside className="aside product_page-aside">
       {sidebar.map((item) => {
         const { route, name, type, icon, id } = item;
         return (
           <Link
-            to={type === "private" ? (loginState ? route : "/sign-in") : route}
+            to={
+              type === "private" ? (isUserLoggedIn ? route : "/sign-in") : route
+            }
             key={id}
             className="aside-item"
           >

@@ -1,6 +1,7 @@
 /* auth services */
 export { signIn } from './auth/signIn';
 export { signUp } from './auth/signUp';
+export {logout} from './auth/logout';
 
 /* data services */
 export { fetchVideoList } from './data/fetchVideoList';
