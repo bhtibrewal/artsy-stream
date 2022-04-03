@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import { useUserContext, useVideoState } from "../../../context";
 import { logout } from "../../../services";
 export const LoggedInAvatar = () => {
-    const {  setIsUserLoggedIn, userDataDispatch } = useUserContext();
-    const { videoStateDispatch } = useVideoState();
+  const { setIsUserLoggedIn, userDataDispatch } = useUserContext();
+  const { videoStateDispatch } = useVideoState();
   return (
     <div className="user">
       <div className="avatar avatar-s">

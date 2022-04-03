@@ -1,4 +1,4 @@
-export const logout=({setIsUserLoggedIn, videoStateDispatch, userDataDispatch})=>{
+export const logout = ({ setIsUserLoggedIn, videoStateDispatch, userDataDispatch }) => {
     setIsUserLoggedIn(false);
     localStorage.clear("token");
     localStorage.clear("user");

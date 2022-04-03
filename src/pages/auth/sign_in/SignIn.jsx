@@ -1,32 +1,74 @@
 import "../auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useUserContext, useVideoState } from "../../../context";
+import { useDocumentTitle } from "../../../custom_hooks";
 import {
   ButtonPrimary,
   OutlineButtonPrimary,
   InputField,
   PasswordInput,
 } from "../../../components";
+import { signIn } from "../../../services";
 
 export const SignIn = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState();
+  const [inputValues, setInputValues] = useState({
+    email: "",
+    password: "",
+  });
+  const guestLogin = {
+    email: "adarshbalika@gmail.com",
+    password: "adarshBalika123",
+  };
+  const { videoStateDispatch } = useVideoState();
+  const { setIsUserLoggedIn, userDataDispatch } = useUserContext();
 
   return (
     <main className="main center">
-      <form className="flex-col signup-sec">
+      <form
+        className="flex-col signup-sec"
+        onSubmit={(e) => {
+          e.preventDefault();
+          signIn({
+            setError,
+            data: inputValues,
+            videoStateDispatch,
+            userDataDispatch,
+            setIsUserLoggedIn,
+            navigate,
+          });
+        }}
+      >
         <p className="body-l">Login to my user account.</p>
 
-        <InputField label={"Email"} placeholder="Email" />
-        <PasswordInput label={"Password"} />
+        <InputField
+          value={inputValues.email}
+          onChange={(e) =>
+            setInputValues({ ...inputValues, email: e.target.value })
+          }
+          label={"Email"}
+          placeholder="Email"
+        />
+        <PasswordInput
+          value={inputValues.password}
+          onChange={(e) =>
+            setInputValues({ ...inputValues, password: e.target.value })
+          }
+          label={"Password"}
+        />
         <label className="flex-align-center">
           <input type="checkbox" />
-          <span className="checkbox-text"> Keep me logged in. </span>
+          <span className="inline-m"> Keep me logged in. </span>
         </label>
         <ButtonPrimary type="submit">
           <span>validate</span>
           <i className="fa-solid fa-arrow-right-long"></i>
         </ButtonPrimary>
-        <OutlineButtonPrimary>Login as Guest</OutlineButtonPrimary>
+        <OutlineButtonPrimary onClick={() => setInputValues(guestLogin)}>
+          Login as Guest
+        </OutlineButtonPrimary>
         <Link to="me" className="link-text-primary">
           Forgot your password?
         </Link>
@@ -39,6 +81,7 @@ export const SignIn = () => {
             SIGN UP
           </div>
         </div>
+        <div className="err-msg">{error}</div>
       </form>
     </main>
   );

@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const signIn = async ({ setError, data, videoStateDispatch,
     userDataDispatch,
-    setisUserLoggedIn,
+    setIsUserLoggedIn,
     navigate, }) => {
     try {
         const {
@@ -11,7 +11,7 @@ export const signIn = async ({ setError, data, videoStateDispatch,
                 encodedToken,
             },
         } = await axios.post("/api/auth/login", data);
-        setisUserLoggedIn(true);
+        setIsUserLoggedIn(true);
         userDataDispatch({ type: "ADD_USER", payload: { firstName, lastName, createdAt } });
         videoStateDispatch({ type: "ADD_PLAYLISTS_LIKEDLIST", payload: { playlists, history, likes, watchlater } });
         axios.defaults.headers.common["authorization"] = encodedToken;
