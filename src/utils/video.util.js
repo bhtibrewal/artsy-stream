@@ -3,12 +3,16 @@ export const isVideoLiked = ({ _id, likedList }) => {
     return likedList.some(video => video._id === _id);
 }
 export const isVideoSaved = ({ _id, playLists }) => {
-    if (playLists.lenght === 0) return false;
+    if (playLists.length === 0) return false;
 
     return playLists.some(playlist => {
         return (playlist.videos.length === 0) ? false :
             playlist.videos.some(video => video._id === _id)
     });
+}
+export const inPlaylist = ({ _id, playlist }) => {
+    if (playlist.length === 0) return false;
+    return playlist.videos.some(video => video._id === _id);
 }
 export const inHistory = ({ _id, history }) => {
     if (history.length === 0) return false;

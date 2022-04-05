@@ -1,13 +1,14 @@
 import {
   LikeButton,
   PlayButton,
-  SaveButton,
+  RemoveFromPlaylistButton,
   WatchLaterButton,
 } from "../buttons";
 import { Rating } from "../index";
 
-export const BasicCard = ({ video, children }) => {
-  const { title, creator, img_src, tag, rating } = video;
+export const PlaylistPageVideoCard = ({ video, playlistId }) => {
+  const { _id, id, title, creator, img_src, tag, rating } = video;
+
   return (
     <div className="card w-30 basic">
       <div className="img-sec">
@@ -22,9 +23,8 @@ export const BasicCard = ({ video, children }) => {
           <Rating rating={rating} />
           <div className="video-actions">
             <LikeButton video={video} />
-            <SaveButton video={video} />
+            <RemoveFromPlaylistButton video={video} playlistId={playlistId} />
             <WatchLaterButton video={video} />
-            {children}
           </div>
         </div>
       </div>

@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { RemovePlaylist } from "../../assets";
-import {  useVideoState } from "../../context";
+import { useToast, useVideoState } from "../../context";
 import { deletePlaylist } from "../../services";
 
 export const PlaylistCard = ({ playlist }) => {
   const { _id, title, desc, videos } = playlist;
   const navigate = useNavigate();
   const { videoStateDispatch } = useVideoState();
-
+  const { showToast } = useToast();
   return (
     <div className="card w-30 basic">
       <div className="img-sec">
@@ -38,6 +38,7 @@ export const PlaylistCard = ({ playlist }) => {
                 deletePlaylist({
                   playlistId: _id,
                   videoStateDispatch,
+                  showToast,
                 })
               }
             >

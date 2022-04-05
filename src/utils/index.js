@@ -1,3 +1,3 @@
-export { isVideoLiked, isVideoSaved, inHistory, isVideoInWatchLater } from "./card.util";
+export { isVideoLiked, isVideoSaved, inHistory, inPlaylist, isVideoInWatchLater } from "./video.util";
 export { getFilteredVideosList, filterByCategory } from './filter.util';
 export { privateRouting } from './privateRouting.util';

@@ -1,11 +1,14 @@
 import axios from "axios"
 
-export const addToPlaylist = async ({ _id, video, videoStateDispatch }) => {
+export const addToPlaylist = async ({ playlistId, video, videoStateDispatch, showToast }) => {
     try {
-        const { data: { playlist } } = await axios.post(`/api/user/playlists/${_id}`, { video });
-        videoStateDispatch({ type: "HANDLE_PLAYLIST", payload: playlist });
+        const res = await axios.post(`/api/user/playlists/${playlistId}`, { video });
+        if (res.status === 201) {
+            videoStateDispatch({ type: "HANDLE_PLAYLIST", payload: res.data.playlist });
+            showToast({ title: "video added to playlist", type: 'success' });
+        }
     }
     catch (e) {
-        console.error(e);
+        showToast({ title: e.response.data.errors, type: 'error' });
     }
 }

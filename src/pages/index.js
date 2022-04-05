@@ -7,3 +7,4 @@ export { WatchLater } from './watch_later/WatchLater';
 export { PlaylistsPage } from './playlists_page/PlaylistsPage';
 export { VideoListing } from './video_listing/VideoListing';
 export { VideoPage } from './video_page/VideoPage';
+export { SinglePlaylistPage } from './single_playlist_page/SinglePlaylistPage';
