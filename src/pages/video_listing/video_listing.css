@@ -1,8 +1,13 @@
+.categories-chip {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* videos listing  */
-.videos-listing-sec{
-    margin-inline: 3rem;
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-    grid-gap:2rem;
-    grid-template-rows: 35rem;
-  }
+.videos-listing-sec {
+  margin-inline: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-gap: 2rem;
+  grid-template-rows: 35rem;
+}
