@@ -3,12 +3,12 @@ import { createContext, useContext, useState } from "react";
 const PlaylistModalContext = createContext();
 
 const PlaylistModalProvider = ({ children }) => {
-  const [display, setDisplay] = useState(false);
+  const [displayModal, setDisplayModal] = useState(false);
   const [video, setVideo] = useState({});
 
   return (
     <PlaylistModalContext.Provider
-      value={{ display, setDisplay, video, setVideo }}
+      value={{ displayModal, setDisplayModal, video, setVideo }}
     >
       {children}
     </PlaylistModalContext.Provider>

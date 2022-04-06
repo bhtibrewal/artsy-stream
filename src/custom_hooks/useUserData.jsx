@@ -6,15 +6,15 @@ export const useUserData = () => {
   const initialisUserLoggedIn = encodedToken !== null ? true : false;
   axios.defaults.headers.common["authorization"] = encodedToken;
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(initialisUserLoggedIn);
-  const address = { street: "", city: "", country: "", zip_code: "" };
-
-  const initialUserData = {
-    firstName: "",
-    lastName: "",
-    email: "",
-    createdAt: "",
-    address,
-  };
+  const localUserData = JSON.parse(localStorage.getItem("user"));
+  const initialUserData = localUserData
+    ? localUserData
+    : {
+        firstName: "",
+        lastName: "",
+        email: "",
+        createdAt: "",
+      };
 
   const user_data_reducer = (state, { type, payload }) => {
     switch (type) {
@@ -25,9 +25,7 @@ export const useUserData = () => {
         };
       case "LOGOUT_USER":
         return { ...initialUserData };
-      case "ADD_ADDRESS":
-        console.log(payload);
-        return { ...state, address: { ...payload } };
+
       default:
         return { ...state };
     }

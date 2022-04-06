@@ -16,11 +16,11 @@ export const SaveButton = ({ video, children }) => {
   const {
     videoState: { playLists },
   } = useVideoState();
-  const { setDisplay, setVideo } = usePlaylistModal();
+  const { setDisplayModal, setVideo } = usePlaylistModal();
 
   const openPlaylistModal = ({ video }) => {
     if (isUserLoggedIn) {
-      setDisplay(true);
+      setDisplayModal(true);
       setVideo(video);
     } else navigate("/sign-in");
   };
