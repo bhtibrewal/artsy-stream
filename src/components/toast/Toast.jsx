@@ -6,17 +6,20 @@ export const Toast = ({ position }) => {
   const { toastList, deleteToast } = useToast();
 
   useEffect(() => {
-    const iterval = setInterval(() => {
+    const interval = setInterval(() => {
       if (toastList.length) deleteToast(toastList[0].id);
     }, 3000);
-    return () => clearInterval(iterval);
+    return () => clearInterval(interval);
   }, [toastList]);
+
   const getIcon = (type) => {
     switch (type) {
+      case "primary":
+        return "fa-circle-info";
       case "success":
         return "fa-circle-check";
       case "error":
-        return "fa-circle-exclamation"
+        return "fa-circle-exclamation";
     }
   };
   return (

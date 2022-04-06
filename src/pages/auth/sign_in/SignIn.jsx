@@ -1,7 +1,7 @@
 import "../auth.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useUserContext, useVideoState } from "../../../context";
+import { useToast, useUserContext, useVideoState } from "../../../context";
 import { useDocumentTitle } from "../../../custom_hooks";
 import {
   ButtonPrimary,
@@ -12,6 +12,7 @@ import {
 import { signIn } from "../../../services";
 
 export const SignIn = () => {
+
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [inputValues, setInputValues] = useState({
@@ -24,6 +25,7 @@ export const SignIn = () => {
   };
   const { videoStateDispatch } = useVideoState();
   const { setIsUserLoggedIn, userDataDispatch } = useUserContext();
+  const { showToast } = useToast();
 
   return (
     <main className="main center">
@@ -37,6 +39,7 @@ export const SignIn = () => {
             videoStateDispatch,
             userDataDispatch,
             setIsUserLoggedIn,
+            showToast,
             navigate,
           });
         }}

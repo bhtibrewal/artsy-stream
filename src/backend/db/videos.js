@@ -14,6 +14,7 @@ export const videos = [
     views: 1000,
     tag: 'Staff Pick',
     duration: '1h24m',
+    dateCreated: new Date('Mar 28 2022'),
     rating: 4,
     categoryName: 'Sketching',
     description:
@@ -29,6 +30,7 @@ export const videos = [
     views: 4250,
     tag: 'New',
     duration: '4h21m',
+    dateCreated: new Date('Mar 27 2022'),
     rating: 3,
     categoryName: 'Sketching',
     description:
@@ -44,6 +46,7 @@ export const videos = [
     views: 4250,
     tag: 'Staff Pick',
     duration: '4h 21m',
+    dateCreated: new Date('Mar 20 2022'),
     rating: 3,
     categoryName: 'Digital Art',
     description:
@@ -59,10 +62,10 @@ export const videos = [
     views: 4250,
     tag: 'Trending',
     duration: '4h 21m',
+    dateCreated: new Date('Mar 18 2022'),
     rating: 2,
     categoryName: 'Painting',
     description:
       "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.",
   },
 ];
-{/* <iframe width="661" height="372" src="https://www.youtube.com/embed/-c3L90nsesw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> */}
