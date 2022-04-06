@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export const clearHistory = async ({  videoStateDispatch }) => {
+export const clearHistory = async ({ videoStateDispatch, showToast }) => {
     try {
-        const { data: { history } } = await axios.post("/api/user/history/all");
-        videoStateDispatch({ type: "HANDLE_HISTORY", payload: history });
+        const res = await axios.delete("/api/user/history/all");
+        if (res.status === 200) {
+            videoStateDispatch({ type: "HANDLE_HISTORY", payload: res.data.history });
+            showToast({ title: "history cleared", type: 'success' })
+        }
     }
     catch (e) {
-        console.error(e);
+        showToast({ title: e.response.data.errors, type: 'error' });
     }
 }

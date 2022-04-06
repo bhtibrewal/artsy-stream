@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export const addToWatchLater = async ({ video, videoStateDispatch }) => {
+export const addToWatchLater = async ({ video, videoStateDispatch, showToast }) => {
     try {
-        const { data: { watchlater } } = await axios.post("/api/user/watchlater", { video });
-        videoStateDispatch({ type: "HANDLE_WATCHLATER", payload: watchlater });
+        const res = await axios.post("/api/user/watchlater", { video });
+        if (res.status === 201) {
+            videoStateDispatch({ type: "HANDLE_WATCHLATER", payload: res.data.watchlater });
+            showToast({ title: "added to watch later", type: 'success' })
+        }
     }
     catch (e) {
-        console.error(e);
+        showToast({ title: e.response.data.errors, type: 'error' });
     }
 }

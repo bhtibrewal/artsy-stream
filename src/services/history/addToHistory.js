@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export const addToHistory = async ({ video, videoStateDispatch }) => {
+export const addToHistory = async ({ video, videoStateDispatch, showToast }) => {
     try {
-        const { data: { history } } = await axios.post("/api/user/history", { video });
-        videoStateDispatch({ type: "HANDLE_HISTORY", payload: history });
+        const res = await axios.post("/api/user/history", { video });
+        if (res.status === 201) {
+            videoStateDispatch({ type: "HANDLE_HISTORY", payload: res.data.history });
+            showToast({ title: "added to history", type: 'success' })
+        }
     }
     catch (e) {
-        console.error(e);
+        showToast({ title: e.response.data.errors, type: 'error' });
     }
 }
