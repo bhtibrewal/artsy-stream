@@ -1,33 +1,29 @@
 import "./header.css";
 import { Link } from "react-router-dom";
 import { useTheme, useUserContext } from "../../context";
-import { LoggedInAvatar, Search } from "./components";
+import { LoggedInAvatar } from "./components";
 
-export const Header = () => {
+export const Header = ({ setDisplaySidebar }) => {
   const { darkMode, setDarkMode } = useTheme();
   const { isUserLoggedIn } = useUserContext();
   return (
     <header className="header">
-      <div>
-        {/* logo */}
-        <h2>
-          <i className="fa-solid fa-paintbrush"></i>
-          Artsy Video
-        </h2>
+      <div className="flex-align-center">
+        <button
+          className="btn hamburger-btn"
+          onClick={() => setDisplaySidebar((prev) => !prev)}
+        >
+          <i className="fa-solid fa-bars fa-xl"></i>
+        </button>
+        <Link to="/">
+          {/* logo */}
+          <h2 className="logo">
+            <i className="fa-solid fa-paintbrush"></i>
+            Artsy Video
+          </h2>
+        </Link>
       </div>
 
-      <div className="header_menu">
-        <Search />
-        {/* <div className="menu_item">
-          <span>Home</span>
-        </div>
-        <div className="menu_item">
-          <span>Watchlist</span>
-        </div>
-        <div className="menu_item">
-          <span>Search</span>
-        </div> */}
-      </div>
       <div className="flex-align-center right-side">
         {/* avatar */}
 
