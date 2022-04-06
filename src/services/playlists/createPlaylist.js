@@ -7,13 +7,15 @@ export const createPlaylist = async ({ video, playlist, videoStateDispatch, show
         if (res.status === 201) {
             videoStateDispatch({ type: "HANDLE_PLAYLISTS", payload: res.data.playlists });
             showToast({ title: "playlist created", type: 'success' });
-            const playlistId = res.data.playlists.slice(-1)[0]._id;
-            addToPlaylist({
-                playlistId,
-                video,
-                videoStateDispatch,
-                showToast,
-            });
+            if (video) {
+                const playlistId = res.data.playlists.slice(-1)[0]._id;
+                addToPlaylist({
+                    playlistId,
+                    video,
+                    videoStateDispatch,
+                    showToast,
+                });
+            }
         }
     }
     catch (e) {

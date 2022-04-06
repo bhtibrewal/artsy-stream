@@ -14,19 +14,19 @@ export const PlaylistModal = () => {
     videoState: { playLists },
     videoStateDispatch,
   } = useVideoState();
-
-  const [showCreatePlaylistForm, setShowCreatePlaylistForm] = useState(false);
-  const [playlist, setPlaylist] = useState({ title: "", desc: "" });
-
-  const { setDisplay, video } = usePlaylistModal();
+  const { setDisplayModal, video, setVideo } = usePlaylistModal();
   const { showToast } = useToast();
+
+  const [showCreatePlaylistForm, setShowCreatePlaylistForm] = useState(
+    video ? false : true
+  );
+  const [playlist, setPlaylist] = useState({ title: "", desc: "" });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (playlist.title === "")
       showToast({ title: "Playlist Title cannot be empty", type: "error" });
     else {
-      setPlaylist({ title: "", desc: "" });
       setShowCreatePlaylistForm(false);
       createPlaylist({
         video,
@@ -34,7 +34,9 @@ export const PlaylistModal = () => {
         videoStateDispatch,
         showToast,
       });
-      setDisplay(false);
+      setPlaylist({ title: "", desc: "" });
+      setDisplayModal(false);
+      setVideo(undefined);
     }
   };
   const handleOnChange = (isVideoInPlaylist, _id) => {
@@ -45,19 +47,23 @@ export const PlaylistModal = () => {
         videoStateDispatch,
         showToast,
       });
-    } else {
+    } else
       addToPlaylist({
         video,
         playlistId: _id,
         videoStateDispatch,
         showToast,
       });
-      setDisplay(false);
-    }
   };
   return (
     <section className="flex-col modal-section-overlay">
-      <button className="btn overlay-close" onClick={() => setDisplay(false)}>
+      <button
+        className="btn overlay-close"
+        onClick={() => {
+          setDisplayModal(false);
+          setVideo(undefined);
+        }}
+      >
         <i className="fa-solid fa-x"></i>
       </button>
       <div className="flex-col modal-section">
@@ -65,20 +71,24 @@ export const PlaylistModal = () => {
 
         {/* playlists list */}
         <div className="playlists-list flex-col">
-          {playLists?.map((playlist) => {
-            const { _id, title } = playlist;
-            const isVideoInPlaylist = inPlaylist({ _id: video._id, playlist });
-            return (
-              <label key={_id}>
-                <input
-                  type={"checkbox"}
-                  checked={isVideoInPlaylist}
-                  onChange={() => handleOnChange(isVideoInPlaylist, _id)}
-                />
-                <span className="inline-m">{title}</span>
-              </label>
-            );
-          })}
+          {video &&
+            playLists.map((playlist) => {
+              const { _id, title } = playlist;
+              const isVideoInPlaylist = inPlaylist({
+                _id: video._id,
+                playlist,
+              });
+              return (
+                <label key={_id}>
+                  <input
+                    type={"checkbox"}
+                    checked={isVideoInPlaylist}
+                    onChange={() => handleOnChange(isVideoInPlaylist, _id)}
+                  />
+                  <span className="inline-m">{title}</span>
+                </label>
+              );
+            })}
         </div>
 
         {/* create  playlist form */}

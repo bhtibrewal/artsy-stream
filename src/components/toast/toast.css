@@ -15,7 +15,7 @@
   right: 5%;
 }
 .toast-container.top-right {
-  top: 5%;
+  top: 10%;
   right: 5%;
 }
 .toast-container.bottom-left {
@@ -23,7 +23,7 @@
   left: 5%;
 }
 .toast-container.top-left {
-  top: 5%;
+  top: 10%;
   left: 5%;
 }
 .toast-icon {

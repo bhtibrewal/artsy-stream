@@ -1,12 +1,14 @@
 import axios from "axios"
 
-export const likeVideo = async ({ video,videoStateDispatch }) => {
+export const likeVideo = async ({ video, videoStateDispatch, showToast }) => {
     try {
         const res = await axios.post("/api/user/likes", { video });
-        // console.log(res.data)
-       videoStateDispatch({ type: "HANDLE_LIKES", payload: res.data.likes });
+        if (res.status == 201) {
+            videoStateDispatch({ type: "HANDLE_LIKES", payload: res.data.likes });
+            showToast({ title: "liked", type: 'success' });
+        }
     }
     catch (e) {
-        console.error(e);
+        showToast({ title: e.response.data.errors, type: 'error' });
     }
 }

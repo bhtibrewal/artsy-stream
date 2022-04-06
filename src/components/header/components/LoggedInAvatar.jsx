@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
-import { useUserContext, useVideoState } from "../../../context";
+import { useToast, useUserContext, useVideoState } from "../../../context";
 import { logout } from "../../../services";
 export const LoggedInAvatar = () => {
   const { setIsUserLoggedIn, userDataDispatch } = useUserContext();
   const { videoStateDispatch } = useVideoState();
+  const { showToast } = useToast();
   return (
     <div className="user">
       <div className="avatar avatar-s">
@@ -17,10 +18,6 @@ export const LoggedInAvatar = () => {
           <span>My Account</span>
           <i className="fa-solid fa-angle-right"></i>
         </Link>
-        <div className="flex-align-center">
-          <span>My offers</span>
-          <i className="fa-solid fa-angle-right"></i>
-        </div>
         <div
           className="flex-align-center"
           onClick={() =>
@@ -28,6 +25,7 @@ export const LoggedInAvatar = () => {
               setIsUserLoggedIn,
               userDataDispatch,
               videoStateDispatch,
+              showToast,
             })
           }
         >

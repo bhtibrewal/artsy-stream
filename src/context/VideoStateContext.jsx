@@ -52,7 +52,6 @@ const VideoStateProvider = ({ children }) => {
     videoStateReducer,
     initialVideoState
   );
-  console.log(videoState);
   useEffect(() => {
     fetchVideoList({ videoStateDispatch });
     fetchCategories({ videoStateDispatch });

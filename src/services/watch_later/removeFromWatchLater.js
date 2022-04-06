@@ -1,11 +1,14 @@
 import axios from "axios";
 
-export const removeFromWatchLater = async ({ _id, videoStateDispatch }) => {
+export const removeFromWatchLater = async ({ _id, videoStateDispatch, showToast }) => {
     try {
-        const { data: { watchlater } } = await axios.delete(`/api/user/watchlater/${_id}`);
-        videoStateDispatch({ type: "HANDLE_WACHLATER", payload: watchlater });
+        const res = await axios.delete(`/api/user/watchlater/${_id}`);
+        if (res.status === 200) {
+            videoStateDispatch({ type: "HANDLE_WACHLATER", payload: res.data.watchlater });
+            showToast({ title: "removed from watch later", type: 'success' })
+        }
     }
     catch (e) {
-        console.error(e);
+        showToast({ title: e.response.data.errors, type: 'error' });
     }
 }

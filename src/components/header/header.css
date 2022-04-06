@@ -9,12 +9,18 @@
   align-items: center;
   padding: 0 5rem;
   justify-content: space-between;
-
 }
 .header_menu {
   display: flex;
   flex: 1;
   justify-content: space-evenly;
+}
+.hamburger-btn {
+  cursor: pointer;
+  color: var(--light-text);
+}
+.logo{
+  cursor: pointer;
 }
 .right-side {
   gap: 2rem;
@@ -27,6 +33,9 @@
 }
 .search-input {
   width: 80%;
+}
+.search-input input {
+  border-color: var(--light-white);
 }
 .search-icon {
   cursor: pointer;

@@ -1,15 +1,22 @@
 .product_page-aside {
-  padding: 3rem ;
-  width:25rem;
-  display:flex;
+  padding: 3rem;
+  width: 25rem;
+  display: flex;
   flex-direction: column;
   border-right: solid var(--secondary-color);
   box-shadow: 0px 2px 20px -4px var(--secondary-color);
 }
-.aside-item{
-  display:flex;
+.aside-item {
+  display: flex;
   align-items: center;
-  gap:2rem;
-  margin-block:1rem;
-  font-size:1.2em;
+  padding: 1rem;
+  font-size: 1.2em;
+}
+.aside-item .aside-icon {
+  margin-inline: 2rem;
+}
+
+.aside-item.active .aside-text {
+  text-decoration: underline solid var(--primary-color) 2px;
+  text-underline-position: under;
 }

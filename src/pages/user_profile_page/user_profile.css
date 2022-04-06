@@ -1,0 +1,20 @@
+.user-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.user-page h1 {
+  text-align: center;
+}
+.user-list-sec{
+  display:flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.sec {
+  background: var(--light-bg);
+  padding: 2rem 2rem;
+}
+.sec-count{
+  margin-left:auto;
+}

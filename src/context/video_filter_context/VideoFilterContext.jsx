@@ -1,23 +1,15 @@
 import { useReducer, createContext, useContext } from "react";
+import { filterReducer } from "./filterReducer";
 
 const VideoFilterContext = createContext();
 
 const VideoFilterProvider = ({ children }) => {
   const initialFilterState = {
     showCategories: [],
-  };
-  const filter_reducer_fn = (state, { type, payload }) => {
-    switch (type) {
-      case "ALL":
-        return { ...state, showCategories: [] };
-      case "ADD_CATEGORY":
-        return { ...state, showCategories: [payload] };
-      default:
-        return state;
-    }
+    searchKeyword: "",
   };
   const [filterState, filterStateDispatch] = useReducer(
-    filter_reducer_fn,
+    filterReducer,
     initialFilterState
   );
   return (

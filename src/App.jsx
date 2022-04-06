@@ -6,10 +6,12 @@ import {
   HistoryPage,
   HomePage,
   LikesPage,
+  Page404,
   PlaylistsPage,
   SignIn,
   SignUp,
   SinglePlaylistPage,
+  UserProfilePage,
   VideoListing,
   VideoPage,
   WatchLater,
@@ -27,7 +29,7 @@ function App() {
     privateRouting({ isUserLoggedIn, pathname, navigate });
   }, [pathname, isUserLoggedIn]);
 
-  const { display } = usePlaylistModal();
+  const { displayModal } = usePlaylistModal();
   const { darkMode } = useTheme();
 
   const authRoutes = ["/sign-in", "/sign-up"];
@@ -57,12 +59,14 @@ function App() {
           path="/playlists/:playlistTitle"
           element={<SinglePlaylistPage />}
         />
-        {/*  */}
+        <Route path="/user-profile" element={<UserProfilePage />} />
+
         <Route path="/sign-in" element={<SignIn />} />
         <Route pat="/sign-up" element={<SignUp />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
 
-      {display && <PlaylistModal />}
+      {displayModal && <PlaylistModal />}
       <Toast position="bottom-right" />
     </div>
   );
