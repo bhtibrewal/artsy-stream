@@ -12,6 +12,7 @@ export const VideoPage = () => {
 
   const {
     videoState: { videoList },
+    videoStateDispatch
   } = useVideoState();
 
   const video = videoList?.find((video) => video.id === videoId);
