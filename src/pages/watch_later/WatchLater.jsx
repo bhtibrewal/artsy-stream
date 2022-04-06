@@ -1,8 +1,10 @@
 import { BasicCard } from "../../components";
 import { useVideoState } from "../../context";
+import { useDocumentTitle } from "../../custom_hooks";
 import { EmptyListPage } from "../emptylist_page/EmptyListPage";
 
 export const WatchLater = () => {
+  useDocumentTitle("| Watch Later");
   const {
     videoState: { watchLater },
   } = useVideoState();

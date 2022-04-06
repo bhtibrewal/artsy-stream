@@ -1,4 +1,7 @@
 import { Server, Model, RestSerializer } from "miragejs";
+import { videos } from "./backend/db/videos";
+import { categories } from "./backend/db/categories";
+import { users } from "./backend/db/users";
 import {
   loginHandler,
   signupHandler,
@@ -13,8 +16,6 @@ import {
   getAllVideosHandler,
   getVideoHandler,
 } from "./backend/controllers/VideoController";
-import { videos } from "./backend/db/videos";
-import { categories } from "./backend/db/categories";
 import {
   getAllCategoriesHandler,
   getCategoryHandler,
@@ -37,7 +38,12 @@ import {
   addVideoToPlaylistHandler,
   removeVideoFromPlaylistHandler,
 } from "./backend/controllers/PlaylistController";
-import { users } from "./backend/db/users";
+import {
+  addNewNoteToVideoHandler,
+  deleteNoteFromVideoHandler,
+  getAllNotesForVideoHandler,
+  removeAllNotesForVideoHandler
+} from "./backend/controllers/NotesController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
     serializers: {
@@ -53,6 +59,7 @@ export function makeServer({ environment = "development" } = {}) {
       history: Model,
       playlist: Model,
       watchlater: Model,
+      notesManagement: Model,
     },
 
     // Runs on the start of the server
@@ -68,7 +75,8 @@ export function makeServer({ environment = "development" } = {}) {
           likes: [],
           history: [],
           playlists: [],
-          watchlater:[],
+          watchlater: [],
+          notesManagement: [],
         })
       );
     },
@@ -131,6 +139,12 @@ export function makeServer({ environment = "development" } = {}) {
         "/user/watchlater/:videoId",
         removeVideoFromWatchLaterHandler.bind(this)
       );
+
+      /* notes api (private) */
+      this.delete("/user/notes/:videoId", removeAllNotesForVideoHandler.bind(this));
+      this.get("/user/notes/:videoId", getAllNotesForVideoHandler.bind(this));
+      this.post("/user/notes/:videoId", addNewNoteToVideoHandler.bind(this));
+      this.delete("/user/notes/:videoId/:noteId", deleteNoteFromVideoHandler.bind(this));
     },
   });
 }
