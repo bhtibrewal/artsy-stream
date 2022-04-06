@@ -4,6 +4,7 @@ export const signIn = async ({ setError, data, videoStateDispatch,
     userDataDispatch,
     setIsUserLoggedIn,
     showToast,
+    navigateback
 }) => {
     try {
         const res = await axios.post("/api/auth/login", data);
@@ -23,6 +24,7 @@ export const signIn = async ({ setError, data, videoStateDispatch,
                 firstName, lastName, email, createdAt
             }))
             showToast({ title: "user logged in", type: 'success' });
+            navigateback();
         }
     } catch (e) {
         showToast({ title: e.response.data.errors, type: 'error' });

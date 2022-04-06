@@ -1,6 +1,6 @@
 import "./App.css";
-import { useEffect, useState } from "react";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Header, PlaylistModal, Sidebar, Toast } from "./components";
 import {
   HistoryPage,
@@ -17,17 +17,11 @@ import {
   WatchLater,
 } from "./pages";
 import { usePlaylistModal, useUserContext, useTheme } from "./context";
-import { privateRouting } from "./utils";
+import { PrivateRoutes } from "./utils/PrivateRoutes";
 
 function App() {
-  const { isUserLoggedIn } = useUserContext();
   const { pathname } = useLocation();
-  const navigate = useNavigate();
   const [displaySidebar, setDisplaySidebar] = useState(true);
-
-  useEffect(() => {
-    privateRouting({ isUserLoggedIn, pathname, navigate });
-  }, [pathname, isUserLoggedIn]);
 
   const { displayModal } = usePlaylistModal();
   const { darkMode } = useTheme();
@@ -51,15 +45,18 @@ function App() {
         />
         <Route path="/videos/:videoId" element={<VideoPage />} />
 
-        <Route path="/likes" element={<LikesPage />} />
-        <Route path="/watch-later" element={<WatchLater />} />
-        <Route path="/history" element={<HistoryPage />} />
-        <Route path="/playlists" element={<PlaylistsPage />} />
-        <Route
-          path="/playlists/:playlistTitle"
-          element={<SinglePlaylistPage />}
-        />
-        <Route path="/user-profile" element={<UserProfilePage />} />
+        {/* private routes */}
+        <Route element={<PrivateRoutes />}>
+          <Route path="/likes" element={<LikesPage />} />
+          <Route path="/watch-later" element={<WatchLater />} />
+          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/playlists" element={<PlaylistsPage />} />
+          <Route
+            path="/playlists/:playlistTitle"
+            element={<SinglePlaylistPage />}
+          />
+          <Route path="/user-profile" element={<UserProfilePage />} />
+        </Route>
 
         <Route path="/sign-in" element={<SignIn />} />
         <Route pat="/sign-up" element={<SignUp />} />
