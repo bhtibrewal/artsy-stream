@@ -12,7 +12,7 @@ export const BasicCard = ({ video, children }) => {
     <div className="card w-30 basic">
       <div className="img-sec">
         <span className="card-tag">{tag}</span>
-        <img className="card-img" src={img_src} alt={`${title} ${creator}`} />
+        <img className="card-img" src={img_src} alt={`${title} ${creator}`} loading="lazy"/>
         <PlayButton video={video} />
       </div>
       <div className="content">

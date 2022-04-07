@@ -61,7 +61,7 @@ export const addNewNoteToVideoHandler = function (schema, request) {
         if (user.notesManagement.some(item => item.videoId === videoId)) {
             const newNotes = user.notesManagement.map(item => {
                 if (item.videoId === videoId)
-                    return { videoId, notes: [...item.notes, { ...note, id: uuid() }] }
+                    return { videoId, notes: [...item.notes, { ...note, id: uuid(), createdAt: formatDate() }] }
                 return item;
             }
             );

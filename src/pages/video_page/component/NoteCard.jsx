@@ -35,14 +35,14 @@ export const NoteCard = ({ note, videoId }) => {
           <p className="body-l">{title}</p>
           <p>{desc} </p>
           <p>
-            {`created on: ${createdAt.split("T")[0]} time:  ${
-              createdAt.split("T")[1].split("+")[0]
+            {`created on: ${createdAt?.split("T")[0]} time:  ${
+              createdAt?.split("T")[1]?.split("+")[0]
             }`}
           </p>
           <p>
             {updatedAt &&
-              `edited on: ${updatedAt.split("T")[0]} time:  ${
-                updatedAt.split("T")[1].split("+")[0]
+              `edited on: ${updatedAt?.split("T")[0]} time:  ${
+                updatedAt?.split("T")[1]?.split("+")[0]
               }`}
           </p>
           <span onClick={() => setNoteEditable(true)}>
