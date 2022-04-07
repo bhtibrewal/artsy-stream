@@ -5,6 +5,8 @@
 
 A Video Library for learning different forms of art in one place, from some of the renouned artists from around the world.
 
+![recording](https://netlify-cocoon.netlify.app/.netlify/functions/fetch?code=307&path=eyJzaXRlX2lkIjoiOGY1Nzg4YzctODY4Yi00MWYwLWE3ODQtMzNhNDRkOGMyZjU0IiwiZGVwbG95X2lkIjoiNjI0ZWVkMDU2YTIxYzAwMDA4YTQ3ZjE5IiwiaWQiOiI2ZTUyN2E0ZS1mMzAzLTRhYzgtOWI3Yy1kNWIzNzBmYmYxYjUifQ==)
+
 Features:
 - User Authentication
 - Watch History
