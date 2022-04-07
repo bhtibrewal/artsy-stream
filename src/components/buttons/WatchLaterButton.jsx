@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToast, useUserContext, useVideoState } from "../../context";
 import { addToWatchLater, removeFromWatchLater } from "../../services";
 import { isVideoInWatchLater } from "../../utils";
@@ -9,6 +9,7 @@ export const WatchLaterButton = ({ video, children }) => {
   const navigate = useNavigate();
   const { isUserLoggedIn } = useUserContext();
   const { showToast } = useToast();
+  const location = useLocation();
   const {
     videoState: { watchLater },
     videoStateDispatch,
@@ -20,7 +21,7 @@ export const WatchLaterButton = ({ video, children }) => {
       if (addedToWatchLater)
         removeFromWatchLater({ _id, videoStateDispatch, showToast });
       else addToWatchLater({ video, videoStateDispatch, showToast });
-    } else navigate("/sign-in");
+    } else navigate("/sign-in", { state: { from: location } });
   };
   return (
     <button

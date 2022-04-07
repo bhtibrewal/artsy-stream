@@ -11,11 +11,14 @@
   align-items: center;
   padding: 1rem;
   font-size: 1.2em;
+
 }
 .aside-item .aside-icon {
   margin-inline: 2rem;
 }
-
+.aside-text{
+  min-width:fit-content;
+}
 .aside-item.active .aside-text {
   text-decoration: underline solid var(--primary-color) 2px;
   text-underline-position: under;

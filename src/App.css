@@ -99,7 +99,7 @@ input {
 .m-top {
   margin-top: 2rem;
 }
-.btn.diabled-btn {
+.btn.disabled-btn {
   cursor: default;
   background-color: var(--gray-bg);
   color: var(--primary-text);

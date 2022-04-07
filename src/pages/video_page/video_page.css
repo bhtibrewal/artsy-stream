@@ -1,0 +1,21 @@
+.notes-management {
+  max-width: 800px;
+}
+.note-card {
+  background: var(--secondary-color);
+  padding: 1rem 2.5rem;
+  position: relative;
+  margin-block: 1rem;
+}
+.note-close-btn {
+  color: var(--primary-text);
+  position: absolute;
+  top: 1.5rem;
+  right: 0.5rem;
+}
+.notes-section {
+  margin-block: 1rem;
+}
+.notes-form {
+  margin: 2rem auto;
+}

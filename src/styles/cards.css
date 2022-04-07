@@ -60,6 +60,7 @@
 /* single video card */
 .single_video-card {
   padding: 4rem;
+  box-shadow: none;
 }
 .single_page-video {
   width: 80%;
@@ -67,6 +68,10 @@
 }
 .video-actions {
   display: flex;
-  gap: 2rem;
+  justify-content:center;
+  gap: 1.5rem;
   margin-top: 1rem;
+}
+.clear-btn {
+  margin-left: auto;
 }

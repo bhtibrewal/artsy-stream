@@ -1,16 +1,15 @@
-import { useNavigate,Navigate, useParams } from "react-router-dom";
+import { useNavigate, Navigate, useParams } from "react-router-dom";
 import { BasicCard, PlaylistPageVideoCard } from "../../components";
 import { useVideoState } from "../../context";
 
 export const SinglePlaylistPage = () => {
-  const navigate = useNavigate();
   const { playlistTitle } = useParams();
   const {
     videoState: { playLists },
   } = useVideoState();
 
-  if(playLists.length === 0){
-    return <Navigate to='/videos'/>
+  if (playLists.length === 0) {
+    return <Navigate to="/videos" />;
   }
 
   const playList = playLists.find(

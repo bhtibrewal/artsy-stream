@@ -21,4 +21,9 @@ export const categories = [
     categoryName: "Digital Art",
     img_src: "https://static.skillshare.com/cdn-cgi/image/width=448,quality=85,format=auto/uploads/video/thumbnails/d80cdb6085507d8f48b11282021eaf5c/original",
   },
+  {
+    _id: uuid(),
+    categoryName: "Illustration",
+    img_src: "https://static.skillshare.com/cdn-cgi/image/width=448,quality=85,format=auto/uploads/video/thumbnails/d80cdb6085507d8f48b11282021eaf5c/original",
+  },
 ];

@@ -1,7 +1,7 @@
 import "../auth.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useUserContext, useVideoState } from "../../../context";
+import { useToast, useUserContext, useVideoState } from "../../../context";
 import { useDocumentTitle } from "../../../custom_hooks";
 import {
   ButtonPrimary,
@@ -12,6 +12,8 @@ import {
 import { signIn } from "../../../services";
 
 export const SignIn = () => {
+  const location = useLocation();
+  let from = location?.state?.from?.pathname || "/";
   const navigate = useNavigate();
   const [error, setError] = useState();
   const [inputValues, setInputValues] = useState({
@@ -24,7 +26,7 @@ export const SignIn = () => {
   };
   const { videoStateDispatch } = useVideoState();
   const { setIsUserLoggedIn, userDataDispatch } = useUserContext();
-
+  const { showToast } = useToast();
   return (
     <main className="main center">
       <form
@@ -37,7 +39,8 @@ export const SignIn = () => {
             videoStateDispatch,
             userDataDispatch,
             setIsUserLoggedIn,
-            navigate,
+            showToast,
+            navigateback: () => navigate(from, { replace: true }),
           });
         }}
       >
