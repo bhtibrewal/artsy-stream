@@ -9,6 +9,7 @@ Features:
 - User Authentication
 - Watch History
 - Like/unlike videos
+- Share Video url
 - Add video to Watch Later
 - Create custom playlists and save videos.
 - Filter Videos based on category.
