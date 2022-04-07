@@ -9,7 +9,7 @@ export const CategoriesSection = () => {
   return (
     <section className="categories_section">
       <h1>Categories</h1>
-      <div className="categories_grid">
+      <div className="categories_grid m-top">
         {categories?.map((category) => {
           const { img_src, _id, categoryName } = category;
           return (

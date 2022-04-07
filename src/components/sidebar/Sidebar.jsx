@@ -16,7 +16,7 @@ export const Sidebar = () => {
             }
           >
             <i className={`fa-solid ${icon} aside-icon`}></i>
-            <p className="aside-text">{name}</p>
+            <span className="aside-text">{name}</span>
           </NavLink>
         );
       })}
