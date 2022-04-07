@@ -1,7 +1,7 @@
 <h1 align="center">Artsy Video Library<h1>
 <h3 align="center">By Bhavika Tibrewal<h3>
  
- Live preview : [Artsy Stream](https://artsy-stream.netlify.app)
+ Live preview : [Artsy Stream](https://artsystream.netlify.app)
 
 A Video Library for learning different forms of art in one place, from some of the renouned artists from around the world.
 
@@ -13,6 +13,7 @@ Features:
 - Create custom playlists and save videos.
 - Filter Videos based on category.
 - Search a particular video.
+- Notes Management
 
 
 Additional Features:
@@ -20,6 +21,14 @@ Additional Features:
 - Dark Theme
 - Responsive
 
-
-
-
+Pages:
+- Home Page
+- Video Listing Page
+- Single video Page
+- Liked Videos Page
+- Watch Later Videos Page
+- History Page
+- Playlists Page
+- Single Playlist Page
+- User Profile Page
+- 404 Page

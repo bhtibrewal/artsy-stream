@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AddedToPlaylist, AddToPlaylist } from "../../assets";
 import {
   usePlaylistModal,
@@ -10,6 +10,7 @@ import { isVideoSaved } from "../../utils";
 
 export const SaveButton = ({ video, children }) => {
   const { _id } = video;
+  const location = useLocation();
   const navigate = useNavigate();
   const { isUserLoggedIn } = useUserContext();
   const { showToast } = useToast();
@@ -22,7 +23,7 @@ export const SaveButton = ({ video, children }) => {
     if (isUserLoggedIn) {
       setDisplayModal(true);
       setVideo(video);
-    } else navigate("/sign-in");
+    } else navigate("/sign-in", { state: { from: location } });
   };
 
   const saved = isVideoSaved({ _id, playLists });

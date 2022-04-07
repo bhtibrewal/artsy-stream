@@ -18,6 +18,7 @@ import {
 } from "./pages";
 import { usePlaylistModal, useUserContext, useTheme } from "./context";
 import { PrivateRoutes } from "./utils/PrivateRoutes";
+import { AuthRoutes } from "./utils/AuthRoutes";
 
 function App() {
   const { pathname } = useLocation();
@@ -57,9 +58,10 @@ function App() {
           />
           <Route path="/user-profile" element={<UserProfilePage />} />
         </Route>
-
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route pat="/sign-up" element={<SignUp />} />
+        <Route element={<AuthRoutes />}>
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Route>
         <Route path="*" element={<Page404 />} />
       </Routes>
 

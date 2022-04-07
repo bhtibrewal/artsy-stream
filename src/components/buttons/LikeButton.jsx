@@ -1,9 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useToast, useUserContext, useVideoState } from "../../context";
 import { likeVideo, unlikeVideo } from "../../services";
 import { isVideoLiked } from "../../utils";
 
 export const LikeButton = ({ video, children }) => {
+  const  location  = useLocation();
   const { _id } = video;
   const navigate = useNavigate();
   const { isUserLoggedIn } = useUserContext();
@@ -18,7 +19,7 @@ export const LikeButton = ({ video, children }) => {
     if (isUserLoggedIn) {
       if (liked) unlikeVideo({ _id, videoStateDispatch, showToast });
       else likeVideo({ video, videoStateDispatch, showToast });
-    } else navigate("/sign-in");
+    } else navigate("/sign-in", { state: { from: location } });
   };
   return (
     <button

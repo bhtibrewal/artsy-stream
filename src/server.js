@@ -42,7 +42,8 @@ import {
   addNewNoteToVideoHandler,
   deleteNoteFromVideoHandler,
   getAllNotesForVideoHandler,
-  removeAllNotesForVideoHandler
+  removeAllNotesForVideoHandler,
+  updateNoteHandler
 } from "./backend/controllers/NotesController";
 export function makeServer({ environment = "development" } = {}) {
   return new Server({
@@ -144,6 +145,7 @@ export function makeServer({ environment = "development" } = {}) {
       this.delete("/user/notes/:videoId", removeAllNotesForVideoHandler.bind(this));
       this.get("/user/notes/:videoId", getAllNotesForVideoHandler.bind(this));
       this.post("/user/notes/:videoId", addNewNoteToVideoHandler.bind(this));
+      this.post("/user/notes/:videoId/:noteId", updateNoteHandler.bind(this));
       this.delete("/user/notes/:videoId/:noteId", deleteNoteFromVideoHandler.bind(this));
     },
   });

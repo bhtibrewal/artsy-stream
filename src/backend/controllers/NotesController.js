@@ -1,5 +1,5 @@
 import { Response } from "miragejs";
-import { requiresAuth } from "../utils/authUtils";
+import { formatDate, requiresAuth } from "../utils/authUtils";
 import { v4 as uuid } from "uuid";
 
 /**
@@ -68,8 +68,28 @@ export const addNewNoteToVideoHandler = function (schema, request) {
             this.db.users.update({ notesManagement: newNotes });
             return new Response(201, {}, { notesManagement: newNotes });
         }
-        user.notesManagement.push({ videoId, notes: [{ ...note, id: uuid() }] });
+        user.notesManagement.push({ videoId, notes: [{ ...note, id: uuid(), createdAt: formatDate() }] });
         return new Response(201, {}, { notesManagement: user.notesManagement });
+    }
+    return new Response(
+        404,
+        {},
+        { errors: ["The user you request does not exist. Not Found error."] }
+    );
+}
+
+export const updateNoteHandler = function (schema, request) {
+    const user = requiresAuth.call(this, request);
+
+    if (user) {
+        const { videoId, noteId } = request.params;
+        const { editedNote } = JSON.parse(request.requestBody);
+        console.log(editedNote);
+        const videoNotes = user.notesManagement.find(item => item.videoId === videoId);
+        const updatedNotes = videoNotes.notes.map(note =>
+            note.id === noteId ? { ...editedNote, updatedAt: formatDate() } : note);
+        videoNotes.notes = updatedNotes;
+        return new Response(200, {}, { notesManagement: user.notesManagement });
     }
     return new Response(
         404,

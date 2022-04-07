@@ -29,4 +29,5 @@ export { removeFromPlaylist } from './playlists/removeFromPlaylist';
 /* notes servives */
 export { removeAllNotesForVideo } from './notes/removeAllNotesForVideo';
 export { addNewNoteToVideo } from './notes/addNewNoteToVideo';
+export { updateNote } from './notes/updateNote';
 export { deleteNotefromVideo } from './notes/deleteNoteFromVideo';

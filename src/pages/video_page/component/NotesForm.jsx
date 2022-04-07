@@ -1,15 +1,25 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ButtonPrimary, InputField } from "../../../components";
 import { useToast, useUserContext, useVideoState } from "../../../context";
-import { addNewNoteToVideo } from "../../../services";
+import { addNewNoteToVideo, updateNote } from "../../../services";
 
-export const NotesForm = ({ videoId }) => {
+export const NotesForm = ({
+  notesToEdit,
+  videoId,
+  noteId,
+  setNoteEditable,
+}) => {
   const navigate = useNavigate();
-  const [notesFormValues, setNotesFormValues] = useState({
-    title: "",
-    desc: "",
-  });
+  const location = useLocation();
+  const [notesFormValues, setNotesFormValues] = useState(
+    notesToEdit
+      ? notesToEdit
+      : {
+          title: "",
+          desc: "",
+        }
+  );
 
   const { isUserLoggedIn } = useUserContext();
   const {
@@ -20,19 +30,31 @@ export const NotesForm = ({ videoId }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     if (notesFormValues.title === "") {
       showToast({ title: "Title Cannot be Empty", type: "error" });
     } else {
-      addNewNoteToVideo({
-        videoId,
-        note: notesFormValues,
-        videoStateDispatch,
-        showToast,
-      });
-      setNotesFormValues({
-        title: "",
-        desc: "",
-      });
+      if (noteId) {
+        updateNote({
+          videoId,
+          noteId: noteId,
+          editedNote: notesFormValues,
+          videoStateDispatch,
+          showToast,
+        });
+        setNoteEditable(false);
+      } else {
+        addNewNoteToVideo({
+          videoId,
+          note: notesFormValues,
+          videoStateDispatch,
+          showToast,
+        });
+        setNotesFormValues({
+          title: "",
+          desc: "",
+        });
+      }
     }
   };
 
@@ -40,7 +62,9 @@ export const NotesForm = ({ videoId }) => {
     return (
       <section className="section ">
         <p className="body-l">Login to Start Adding Notes</p>
-        <ButtonPrimary onClick={() => navigate("/sign-in")}>
+        <ButtonPrimary
+          onClick={() => navigate("/sign-in", { state: { from: location } })}
+        >
           Login
         </ButtonPrimary>
       </section>
@@ -64,7 +88,9 @@ export const NotesForm = ({ videoId }) => {
         label={"Description"}
         placeholder="Description"
       />
-      <ButtonPrimary type="submit">Add Note</ButtonPrimary>
+      <ButtonPrimary type="submit">
+        {noteId ? "Update Note" : "Add Note"}
+      </ButtonPrimary>
     </form>
   );
 };

@@ -31,6 +31,14 @@ export const videoStateReducer = (state, { type, payload }) => {
       };
     case "NOTES_MANGEMENT":
       return { ...state, notesManagement: [...payload] };
+    case 'RESET_PLAYLISTS_AND_LIKEDLIST_AND_HISTORY_AND_WATCHLATER':
+      return {
+        ...state, playLists: [],
+        likedList: [],
+        history: [],
+        watchLater: [],
+        notesManagement: []
+      }
     default:
       return { ...state };
   }
